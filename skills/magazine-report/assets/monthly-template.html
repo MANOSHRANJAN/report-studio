@@ -1,0 +1,245 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>{{MASTHEAD}} — {{MONTH}} {{YEAR}}</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<!--FONTS--><link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300..900;1,9..144,300..900&family=Inter+Tight:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet"><!--/FONTS-->
+<link rel="stylesheet" href="magazine.css">
+<!--BRAND-->
+</head>
+<body>
+<!--
+  MONTHLY ISSUE — fill from month.json / digest.md. Every number must come from the data.
+  Delete a page rather than leave it thin; duplicate a page type when the month is rich.
+  Pages: 1 cover · 2 letter+glance · 3 numbers · 4 lead story · 5 highlights · 6 photo essay
+         7 on X · 8 the month, day by day · 9 coming up + back
+-->
+
+<!-- ========================== 01 · COVER ========================== -->
+<section class="page cover" data-type="cover">
+  <figure class="slot fill" data-slot="p01-cover" data-ratio="210/297"
+          data-hint="Best photo of the month: people, not posters. Portrait crop, calm area at top and bottom.">
+    <div class="frame" style="height:100%"><img src="images/p01-cover.jpg" alt=""></div>
+  </figure>
+  <div class="scrim"></div>
+  <header class="masthead">
+    <h1>{{MASTHEAD}}</h1>
+    <div class="issue">Monthly report<br>{{MONTH}} {{YEAR}}</div>
+  </header>
+  <div class="lines">
+    <p class="month-xxl">{{MONTH}}</p>
+    <h2 class="h-l" style="margin-top:5mm;max-width:150mm">Cover line: the one thing that defined this month</h2>
+    <div class="sub">
+      <div><b>Lead story</b>Second cover line from the biggest website item</div>
+      <div><b>In numbers</b>The month’s headline figure</div>
+      <div><b>On X</b>Top post of the month, in five words</div>
+    </div>
+  </div>
+</section>
+
+<!-- ========================== 02 · LETTER + AT A GLANCE ========================== -->
+<section class="page left" data-type="letter">
+  <div class="grid" style="height:100%;align-content:start">
+    <div style="grid-column: 1 / span 7">
+      <p class="kicker">From the team</p>
+      <h2 class="h-xl" style="margin:3mm 0 6mm">{{MONTH}}, in short</h2>
+      <div class="body cols-2" style="column-gap:var(--gutter)">
+        <p class="dropcap">The letter: four short paragraphs. What the organisation set out to do this month, what actually happened (with two concrete facts from the data), who made it possible, and what comes next.</p>
+        <p>Second paragraph.</p>
+        <p>Third paragraph.</p>
+        <p>Closing line that points to next month.</p>
+        <p class="byline" style="text-indent:0;margin-top:3mm">— Name, Role</p>
+      </div>
+    </div>
+    <div style="grid-column: 9 / span 4">
+      <figure class="slot" data-slot="p02-letter" data-ratio="4/5" data-hint="Team, volunteers or the founder at work this month.">
+        <div class="frame"><img src="images/p02-letter.jpg" alt=""></div>
+        <figcaption class="caption">Caption. <span class="credit">Photo: {{ORG}}</span></figcaption>
+      </figure>
+    </div>
+    <div style="grid-column: 1 / span 12; margin-top:12mm">
+      <p class="kicker" style="margin-bottom:3mm">At a glance</p>
+      <div class="glance">
+        <div><b class="num">0</b><span>New projects</span></div>
+        <div><b class="num">0</b><span>Events held</span></div>
+        <div><b class="num">0</b><span>Posts on X</span></div>
+        <div><b class="num">0</b><span>Views on X</span></div>
+      </div>
+    </div>
+    <ol class="toc" style="grid-column: 1 / span 12; margin-top:10mm">
+      <li><span class="n">03</span><span class="t">The month in numbers</span><span class="p">03</span></li>
+      <li><span class="n">04</span><span class="t">Lead story headline</span><span class="p">04</span></li>
+      <li><span class="n">05</span><span class="t">Highlights</span><span class="p">05</span></li>
+      <li><span class="n">06</span><span class="t">In pictures</span><span class="p">06</span></li>
+      <li><span class="n">07</span><span class="t">On X</span><span class="p">07</span></li>
+      <li><span class="n">08</span><span class="t">Day by day</span><span class="p">08</span></li>
+    </ol>
+  </div>
+  <div class="folio"><span><b>02</b> · Letter</span><span>{{MASTHEAD}} · {{MONTH}} {{YEAR}}</span></div>
+</section>
+
+<!-- ========================== 03 · NUMBERS ========================== -->
+<section class="page" data-type="numbers" style="background:var(--tint);display:flex;flex-direction:column">
+  <p class="kicker">The month in numbers</p>
+  <h2 class="h-xl" style="margin:3mm 0 5mm;max-width:160mm">Headline that says what the numbers add up to</h2>
+  <p class="standfirst" style="max-width:120mm;color:var(--muted)">One line of context: compared with last month, or against the year’s goal.</p>
+  <div class="grid" style="row-gap:12mm;margin-top:auto;margin-bottom:6mm">
+    <div class="stat" style="grid-column: span 6"><div class="v num" style="font-size:104pt">0</div><p class="l">Biggest number of the month: website or programme data.</p><p class="source">Source: hindu.fund, {{MONTH}} {{YEAR}}</p></div>
+    <div class="stat" style="grid-column: span 6"><div class="v num" style="font-size:104pt">0</div><p class="l">Second number, e.g. total views on X.</p><p class="source">Source: X @{{HANDLE}}</p></div>
+    <div class="stat" style="grid-column: span 4"><div class="v num" style="font-size:44pt">0</div><p class="l">Supporting number.</p><p class="source">Source</p></div>
+    <div class="stat" style="grid-column: span 4"><div class="v num" style="font-size:44pt">0</div><p class="l">Supporting number.</p><p class="source">Source</p></div>
+    <div class="stat" style="grid-column: span 4"><div class="v num" style="font-size:44pt">0</div><p class="l">Supporting number.</p><p class="source">Source</p></div>
+  </div>
+  <div class="folio"><span>{{MASTHEAD}} · {{MONTH}} {{YEAR}}</span><span>Numbers · <b>03</b></span></div>
+</section>
+
+<!-- ========================== 04 · LEAD STORY ========================== -->
+<section class="page left" data-type="feature">
+  <figure class="slot bleed bleed-top" data-slot="p04-lead" data-ratio="210/118"
+          data-hint="Wide photo of the lead story: event crowd, project site, ceremony.">
+    <div class="frame"><img src="images/p04-lead.jpg" alt=""></div>
+  </figure>
+  <p class="kicker" style="margin-top:7mm">Lead story</p>
+  <h2 class="h-l" style="margin:3mm 0 3mm;max-width:160mm">Lead story headline, written as a claim</h2>
+  <div class="grid">
+    <p class="standfirst" style="grid-column: 1 / span 9; font-size:12.5pt">Standfirst: what happened, where, who was there, why it matters.</p>
+    <p class="byline" style="grid-column: 10 / span 3; align-self:end">Date · Place</p>
+  </div>
+  <hr class="rule" style="margin:4mm 0">
+  <div class="body cols-3">
+    <p class="dropcap">Story text from the website item (rewrite, don’t paste). Three short columns. Quote a person if the source has one; numbers only from the data.</p>
+    <p>Second paragraph.</p>
+    <blockquote class="pull">“A line worth repeating.”<cite>— Name</cite></blockquote>
+    <p>Third paragraph.</p>
+    <p>Link: hindu.fund/…</p>
+  </div>
+  <div class="folio"><span><b>04</b> · Lead story</span><span>{{MASTHEAD}} · {{MONTH}} {{YEAR}}</span></div>
+</section>
+
+<!-- ========================== 05 · HIGHLIGHTS ========================== -->
+<section class="page" data-type="highlights">
+  <p class="kicker">Highlights</p>
+  <h2 class="h-xl" style="margin:3mm 0 8mm">What else happened</h2>
+  <div class="grid" style="row-gap:9mm">
+    <article class="story" style="grid-column: span 6">
+      <figure class="slot" data-slot="p05-a" data-ratio="3/2" data-hint="Photo for highlight A (project / grantee / event)."><div class="frame"><img src="images/p05-a.jpg" alt=""></div></figure>
+      <span class="kicker">Project</span><h3>Highlight A headline</h3><p>Two sentences from the source.</p><span class="date">12 Sep · hindu.fund/…</span>
+    </article>
+    <article class="story" style="grid-column: span 6">
+      <figure class="slot" data-slot="p05-b" data-ratio="3/2" data-hint="Photo for highlight B."><div class="frame"><img src="images/p05-b.jpg" alt=""></div></figure>
+      <span class="kicker">Event</span><h3>Highlight B headline</h3><p>Two sentences from the source.</p><span class="date">Date · link</span>
+    </article>
+    <article class="story" style="grid-column: span 4">
+      <figure class="slot" data-slot="p05-c" data-ratio="1/1" data-hint="Photo for highlight C."><div class="frame"><img src="images/p05-c.jpg" alt=""></div></figure>
+      <span class="kicker">Grantee</span><h3>Highlight C headline</h3><p>One sentence.</p><span class="date">Date</span>
+    </article>
+    <article class="story" style="grid-column: span 4">
+      <figure class="slot" data-slot="p05-d" data-ratio="1/1" data-hint="Photo for highlight D."><div class="frame"><img src="images/p05-d.jpg" alt=""></div></figure>
+      <span class="kicker">Resource</span><h3>Highlight D headline</h3><p>One sentence.</p><span class="date">Date</span>
+    </article>
+    <article class="story" style="grid-column: span 4">
+      <figure class="slot" data-slot="p05-e" data-ratio="1/1" data-hint="Photo for highlight E."><div class="frame"><img src="images/p05-e.jpg" alt=""></div></figure>
+      <span class="kicker">Update</span><h3>Highlight E headline</h3><p>One sentence.</p><span class="date">Date</span>
+    </article>
+  </div>
+  <div class="folio"><span>{{MASTHEAD}} · {{MONTH}} {{YEAR}}</span><span>Highlights · <b>05</b></span></div>
+</section>
+
+<!-- ========================== 06 · PHOTO ESSAY ========================== -->
+<section class="page dark" data-type="essay">
+  <p class="kicker">In pictures</p>
+  <h2 class="h-l" style="margin:3mm 0 6mm">{{MONTH}} through the lens</h2>
+  <div class="grid" style="row-gap:5mm">
+    <figure class="slot" data-slot="p06-a" data-ratio="16/10" style="grid-column: 1 / span 12"
+            data-hint="Strongest documentary photo of the month (Drive)."><div class="frame"><img src="images/p06-a.jpg" alt=""></div>
+      <figcaption class="caption" style="color:inherit;opacity:.7">Caption: who, where, when.</figcaption></figure>
+    <figure class="slot" data-slot="p06-b" data-ratio="4/5" style="grid-column: 1 / span 5"
+            data-hint="Portrait-orientation moment: a face, a hand, a ritual detail."><div class="frame"><img src="images/p06-b.jpg" alt=""></div>
+      <figcaption class="caption" style="color:inherit;opacity:.7">Caption.</figcaption></figure>
+    <figure class="slot" data-slot="p06-c" data-ratio="7/5" style="grid-column: 6 / span 7"
+            data-hint="Wide second moment: venue, audience, landscape."><div class="frame"><img src="images/p06-c.jpg" alt=""></div>
+      <figcaption class="caption" style="color:inherit;opacity:.7">Caption.</figcaption></figure>
+  </div>
+  <div class="folio"><span><b>06</b> · In pictures</span><span>{{MASTHEAD}} · {{MONTH}} {{YEAR}}</span></div>
+</section>
+
+<!-- ========================== 07 · ON X ========================== -->
+<section class="page left" data-type="social">
+  <div class="grid">
+    <div style="grid-column: 1 / span 7">
+      <p class="kicker">On X · @{{HANDLE}}</p>
+      <h2 class="h-xl" style="margin:3mm 0 6mm">What we said</h2>
+    </div>
+    <div style="grid-column: 9 / span 4; align-self:end; margin-bottom:6mm">
+      <p class="caption" style="margin-bottom:2mm">Posts per week</p>
+      <div class="bars"><i style="height:40%" data-l="W1"></i><i style="height:70%" data-l="W2"></i><i class="hi" style="height:100%" data-l="W3"></i><i style="height:55%" data-l="W4"></i><i style="height:20%" data-l="W5"></i></div>
+    </div>
+  </div>
+  <div class="grid">
+    <div class="post lead" style="grid-column: 1 / span 7">
+      <div class="meta"><span>Top post · 00 Sep</span><span>x.com/{{HANDLE}}/status/…</span></div>
+      <p class="txt">Verbatim text of the month’s best-performing post.</p>
+      <div class="m">0<span>views</span> 0<span>likes</span> 0<span>reposts</span></div>
+    </div>
+    <figure class="slot" data-slot="p07-post" data-ratio="1/1" style="grid-column: 9 / span 4; margin-top:3mm"
+            data-hint="The image attached to the top post (from X media)."><div class="frame"><img src="images/p07-post.jpg" alt=""></div></figure>
+  </div>
+  <div class="grid" style="margin-top:6mm;row-gap:2mm">
+    <div class="post" style="grid-column: span 4"><div class="meta"><span>00 Sep</span><span>link</span></div><p class="txt">Second post, verbatim.</p><div class="m">0<span>views</span> 0<span>likes</span></div></div>
+    <div class="post" style="grid-column: span 4"><div class="meta"><span>00 Sep</span><span>link</span></div><p class="txt">Third post, verbatim.</p><div class="m">0<span>views</span> 0<span>likes</span></div></div>
+    <div class="post" style="grid-column: span 4"><div class="meta"><span>00 Sep</span><span>link</span></div><p class="txt">Fourth post, verbatim.</p><div class="m">0<span>views</span> 0<span>likes</span></div></div>
+    <div class="post" style="grid-column: span 4"><div class="meta"><span>00 Sep</span><span>link</span></div><p class="txt">Fifth post.</p><div class="m">0<span>views</span> 0<span>likes</span></div></div>
+    <div class="post" style="grid-column: span 4"><div class="meta"><span>00 Sep</span><span>link</span></div><p class="txt">Sixth post.</p><div class="m">0<span>views</span> 0<span>likes</span></div></div>
+    <div class="post" style="grid-column: span 4"><div class="meta"><span>00 Sep</span><span>link</span></div><p class="txt">Seventh post.</p><div class="m">0<span>views</span> 0<span>likes</span></div></div>
+  </div>
+  <div class="folio"><span><b>07</b> · On X</span><span>{{MASTHEAD}} · {{MONTH}} {{YEAR}}</span></div>
+</section>
+
+<!-- ========================== 08 · DAY BY DAY ========================== -->
+<section class="page" data-type="timeline">
+  <div class="grid">
+    <div style="grid-column: 1 / span 4">
+      <p class="kicker">Day by day</p>
+      <h2 class="h-l" style="margin:3mm 0 5mm">The month, in order</h2>
+      <p class="caption">Every dated item from the website and X, merged. Filled dots mark the key moments.</p>
+    </div>
+    <ol class="timeline" style="grid-column: 6 / span 7">
+      <li class="key"><span class="d">03 Sep</span><div class="t">Dated item title<span class="src">Web</span></div><div class="s">One-line detail.</div></li>
+      <li><span class="d">07 Sep</span><div class="t">Dated item title<span class="src">X</span></div><div class="s">One-line detail.</div></li>
+      <li><span class="d">12 Sep</span><div class="t">Dated item title<span class="src">Web</span></div><div class="s">One-line detail.</div></li>
+      <li class="key"><span class="d">18 Sep</span><div class="t">Dated item title<span class="src">Event</span></div><div class="s">One-line detail.</div></li>
+      <li><span class="d">25 Sep</span><div class="t">Dated item title<span class="src">X</span></div><div class="s">One-line detail.</div></li>
+    </ol>
+  </div>
+  <div class="folio"><span>{{MASTHEAD}} · {{MONTH}} {{YEAR}}</span><span>Day by day · <b>08</b></span></div>
+</section>
+
+<!-- ========================== 09 · COMING UP + BACK ========================== -->
+<section class="page dark left" data-type="back">
+  <p class="kicker">Coming up</p>
+  <h2 class="h-xl" style="margin:3mm 0 7mm">Next month</h2>
+  <ol class="upcoming">
+    <li><span class="when">24–25<small>Oct</small></span><span class="what">Upcoming event title<small>City · type of event · how to join</small></span></li>
+    <li><span class="when">30<small>Oct</small></span><span class="what">Upcoming event title<small>City · details</small></span></li>
+    <li><span class="when">14–15<small>Nov</small></span><span class="what">Upcoming event title<small>City · details</small></span></li>
+  </ol>
+  <div class="cta" style="margin-top:10mm">
+    <h3>Call to action from the website: contribute, host, volunteer</h3>
+    <p>One sentence on what support makes possible.</p>
+    <p class="url">{{WEBSITE}}</p>
+  </div>
+  <div style="position:absolute;left:var(--m-out);right:var(--m-in);bottom:20mm" class="grid">
+    <p style="grid-column: 1 / span 6; font: 700 30pt/.85 var(--serif); letter-spacing:-.03em">{{MASTHEAD}}</p>
+    <p class="caption" style="grid-column: 7 / span 6; align-self:end; color:inherit; opacity:.7">
+      Sources: {{WEBSITE}}, X @{{HANDLE}}, {{ORG}} photo archive. Stock images: credits in captions.
+      Produced {{MONTH}} {{YEAR}}.</p>
+  </div>
+  <div class="folio"><span><b>09</b> · Coming up</span><span>{{MASTHEAD}} · {{MONTH}} {{YEAR}}</span></div>
+</section>
+
+<script src="magazine.js"></script>
+</body>
+</html>

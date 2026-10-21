@@ -10,3 +10,6 @@ __pycache__/
 .env
 .env.*
 *cookies*
+
+# past issues used as design references can hold internal figures
+design-references/*.pdf

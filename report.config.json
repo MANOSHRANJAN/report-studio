@@ -1,0 +1,96 @@
+{
+  "org": "Hindu Fund",
+  "masthead": "Hindu Fund",
+  "theme": "hindu-fund",
+  "edition_name": "Monthly Report",
+  "twitter": {
+    "handles": [
+      "hindufund_",
+      "HinduLegalFund"
+    ],
+    "include_replies": false,
+    "include_retweets": false,
+    "max_posts": 300
+  },
+  "website": {
+    "url": "https://hindu.fund",
+    "wp_types": [
+      "posts",
+      "events",
+      "past-events",
+      "project",
+      "grantees",
+      "grant",
+      "resources",
+      "activity"
+    ],
+    "include_modified": false,
+    "cta_url": "hindu.fund/contribute"
+  },
+  "drive": {
+    "photo_folders": [
+      "Hindu Fund Promotion Document - City Chapters"
+    ],
+    "photo_query_extra": "",
+    "prefer_month_window": true,
+    "skip_title_patterns": [
+      "logo",
+      "ChatGPT Image",
+      "screenshot",
+      "QR"
+    ],
+    "data_sheets": [
+      "MIS Sheet",
+      "Data for Annual Report",
+      "Hindu Fund | Lifetime Grants"
+    ],
+    "monthly_reports_folder": "Monthly Update Reports"
+  },
+  "stock": {
+    "providers": [
+      "pexels",
+      "unsplash",
+      "openverse"
+    ],
+    "keywords": [
+      "Hindu temple",
+      "Indian festival celebration",
+      "diya lamp",
+      "Sanskrit manuscript",
+      "Indian classical dance",
+      "Varanasi ghat",
+      "temple architecture India",
+      "community seva India"
+    ],
+    "avoid": [
+      "tourist selfie",
+      "stock handshake"
+    ],
+    "max_per_issue": 6
+  },
+  "brand": {
+    "fonts_url": "https://fonts.googleapis.com/css2?family=Playfair:ital,opsz,wght@0,5..1200,300..900;1,5..1200,300..900&family=Inter+Tight:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&family=Tiro+Devanagari+Sanskrit:ital@0;1&display=swap",
+    "vars": {
+      "--paper": "#FBF5EA",
+      "--ink": "#2A1210",
+      "--muted": "#7A675C",
+      "--rule": "#DDCBB4",
+      "--accent": "#7E1C1A",
+      "--accent-2": "#E3962B",
+      "--tint": "#F4E6CF",
+      "--serif": "\"Playfair\", \"Tiro Devanagari Sanskrit\", Georgia, serif",
+      "--sans": "\"Inter Tight\", \"Helvetica Neue\", Arial, sans-serif"
+    },
+    "tagline": "धर्मस्य मूलम् अर्थः"
+  },
+  "manual_inputs": {
+    "_note": "Numbers no API provides. Fill per month (or let the skill ask).",
+    "shubhchintak_new_members": null,
+    "followers": {
+      "youtube": null,
+      "instagram": null,
+      "facebook": null,
+      "linkedin": null
+    }
+  }
+}

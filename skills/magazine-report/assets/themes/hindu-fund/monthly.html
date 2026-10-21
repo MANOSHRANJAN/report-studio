@@ -1,0 +1,410 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Hindu Fund — Monthly Impact Report — {{MONTH}} {{YEAR}}</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<!--FONTS--><link href="https://fonts.googleapis.com/css2?family=Alike&family=Gelasio:ital,wght@0,400..700;1,400..700&family=Poppins:wght@400;500;600;700&family=Public+Sans:wght@400;500;600;700&family=Tiro+Devanagari+Sanskrit&display=swap" rel="stylesheet"><!--/FONTS-->
+<link rel="stylesheet" href="magazine.css">
+<link rel="stylesheet" href="theme.css">
+</head>
+<body>
+<!--
+  HINDU FUND · MONTHLY IMPACT REPORT — structure follows the August 2026 issue (design-references/).
+  Each page notes its DATA SOURCE. Never invent numbers: if a figure is missing, leave the
+  placeholder and list it under "Missing data" in brief.md.
+  Pages: 01 cover · 02 founder's note · 03 Shubhchintak · 04 digital footprint · 05 webinar
+         06 donor contributions · 07 grants disbursed · 08 major events · 09 major initiative
+         10 impact story · 11 lifetime impact · 12 donor process (static) · 13 priority projects + appeal
+  Drop a page when its data does not exist this month; duplicate 08/10 when the month is rich.
+-->
+
+<!-- ======================= 01 · COVER ======================= -->
+<!-- DATA: collage = 5 best Drive/X event photos of the month · mission figures = static -->
+<section class="page" data-type="cover">
+  <div class="cover-hf">
+    <div class="logo"><img src="logo.png" alt="Hindu Fund"></div>
+    <div class="mission">
+      <figure class="slot bare" data-slot="p01-temple" data-ratio="free"
+              data-hint="Temple at dusk (landscape). Static brand image; reuse each month unless replaced.">
+        <div class="frame" style="height:100%"><img src="images/p01-temple.jpg" alt=""></div>
+      </figure>
+      <div class="veil"></div>
+      <div class="inner">
+        <h3>Our Mission</h3>
+        <p class="big">₹1,000 CRORE</p>
+        <p class="sub">GRANTS FUND</p>
+        <ul>
+          <li><span class="badge"><i class="ico" data-i="users"></i></span>Trust-led<br>grants</li>
+          <li><span class="badge"><i class="ico" data-i="search"></i></span>Transparent<br>deployment</li>
+          <li><span class="badge"><i class="ico" data-i="sprout"></i></span>Long-term<br>institution building</li>
+        </ul>
+      </div>
+    </div>
+    <div class="title"><h1>Monthly Impact<br>Report<br>{{MONTH}} {{YEAR}}</h1></div>
+    <div class="tag paper" style="grid-row: 3">
+      <h2>Building institutions.<br>Funding changemakers.<br>Strengthening Dharma.</h2>
+      <p>A monthly snapshot of the institutions, grants, partnerships and people helping build a stronger Dharmic ecosystem.</p>
+      <div class="inside">
+        <i class="ico" data-i="book" style="font-size:9mm;color:var(--brown);margin-left:2mm"></i>
+        <b>INSIDE<br>THIS ISSUE</b>
+        <div class="it"><i class="ico" data-i="scale"></i>Section<br>one</div>
+        <div class="it"><i class="ico" data-i="temple"></i>Section<br>two</div>
+        <div class="it"><i class="ico" data-i="users"></i>Donor<br>Growth</div>
+        <div class="it"><i class="ico" data-i="rupee"></i>Grants</div>
+        <div class="it"><i class="ico" data-i="chart"></i>Priority<br>Projects</div>
+      </div>
+    </div>
+    <div class="collage">
+      <figure class="slot" data-slot="p01-c1" data-ratio="free" data-hint="Event photo 1"><div class="frame"><img src="images/p01-c1.jpg" alt=""></div></figure>
+      <figure class="slot" data-slot="p01-c2" data-ratio="free" data-hint="Event photo 2"><div class="frame"><img src="images/p01-c2.jpg" alt=""></div></figure>
+      <figure class="slot tall" data-slot="p01-c3" data-ratio="free" data-hint="Portrait-orientation moment (meeting, blessing, ceremony)"><div class="frame"><img src="images/p01-c3.jpg" alt=""></div></figure>
+      <figure class="slot" data-slot="p01-c4" data-ratio="free" data-hint="Event photo 3"><div class="frame"><img src="images/p01-c4.jpg" alt=""></div></figure>
+      <figure class="slot" data-slot="p01-c5" data-ratio="free" data-hint="Group photo"><div class="frame"><img src="images/p01-c5.jpg" alt=""></div></figure>
+    </div>
+  </div>
+</section>
+
+<!-- ======================= 02 · FOUNDER'S NOTE ======================= -->
+<!-- DATA: draft from the month's themes; mark DRAFT in brief.md for founder approval. Photo: founder portrait from Drive -->
+<section class="page paper" data-type="founder">
+  <div class="full">
+    <div class="goldbg" style="height:23mm;display:flex;align-items:center;padding:0 var(--pad)"><h1 class="h-sec" style="font-size:24pt">FOUNDER’S NOTE</h1></div>
+    <div class="split" style="flex:1;min-height:0">
+      <figure class="slot bare" data-slot="p02-founder" data-ratio="free" style="height:100%"
+              data-hint="Founder portrait (Rahul Dewan), cut-out or soft background, facing right.">
+        <div class="frame" style="height:100%;background:transparent"><img src="images/p02-founder.png" alt="" style="object-position:55% top"></div>
+      </figure>
+      <div style="padding:8mm var(--pad) 6mm 2mm;display:flex;flex-direction:column">
+        <p class="bigquote">One-line idea of the month, said plainly and with conviction.</p>
+        <div class="orn" style="margin-top:6mm"><i></i></div>
+        <div class="txt"><p>Paragraph one: what the month was about, in the founder’s voice.</p></div>
+        <div class="callout" style="margin:4mm 0"><p>A two-line emphasis.<br>Second line.</p></div>
+        <div class="txt"><p>Paragraph two: a concrete fact from this month (grant, event, launch).</p><p>Paragraph three: what this enables next.</p></div>
+        <div class="callout" style="margin-top:4mm"><p>Closing call: what supporters should do or believe.</p></div>
+        <div class="orn" style="margin-top:auto"><i></i></div>
+        <div class="signoff"><b>Rahul Dewan</b><span>Founder, Hindu Fund</span></div>
+      </div>
+    </div>
+    <div class="foot-band"></div>
+  </div>
+</section>
+
+<!-- ======================= 03 · SHUBHCHINTAK COMMUNITY ======================= -->
+<!-- DATA: new members this month (ask user / Drive MIS sheet) · one community post (text from X or WhatsApp export) -->
+<section class="page" data-type="community">
+  <div class="split">
+    <div class="half paper">
+      <div class="hdr"><h1>Ongoing Initiatives &amp;<em>Engagement Highlights</em></h1></div>
+      <div class="body-pad" style="padding-bottom:0">
+        <h2 class="h-sec">Building Deeper Connections<br>Through Shubhchintak</h2>
+        <div class="short-rule"></div>
+        <p class="lede" style="font-size:11pt">This month, the Shubhchintak community … welcoming <b>00</b> new members and further expanding a committed network of Dharmic supporters.</p>
+      </div>
+      <figure class="slot" data-slot="p03-community" data-ratio="16/8" style="margin-top:auto"
+              data-hint="Phone showing the WhatsApp community, warm interior (reuse brand image).">
+        <div class="frame"><img src="images/p03-community.jpg" alt=""></div>
+      </figure>
+    </div>
+    <div class="half cream">
+      <div class="hdr gold"><h2>A Glimpse of the Engagement<br>on the Shubhchintak Group</h2></div>
+      <div class="body-pad" style="display:flex;flex-direction:column;gap:6mm">
+        <div class="wa">
+          <div class="from">~ hindu fund · Community admin</div>
+          <p style="margin-top:2mm">Text of the month’s most-engaged community post, verbatim.</p>
+          <div class="meta"><span>👍 ❤️ 🙏 00</span><span>00:00 am</span></div>
+        </div>
+        <div class="join" style="margin-top:auto">
+          <div>
+            <p>To keep yourself updated on our projects and grantees, subscribe to the Shubhchintak channel.</p>
+            <span class="btn"><i class="ico" data-i="whatsapp"></i>Click / Scan to join the group</span>
+          </div>
+          <figure class="slot qr" data-slot="qr-whatsapp" data-ratio="1/1" data-hint="WhatsApp channel QR (static)"><div class="frame"><img src="images/qr-whatsapp.png" alt=""></div></figure>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ======================= 04 · DIGITAL FOOTPRINT (X) ======================= -->
+<!-- DATA: sources/x.json (top posts, verbatim, real metrics) · follower counts: X via `twitter user`, others from config/user -->
+<section class="page" data-type="social">
+  <div class="split">
+    <div class="half paper">
+      <div class="hdr"><h1>Ongoing Initiatives &amp;<em>Engagement Highlights</em></h1></div>
+      <div class="body-pad">
+        <h2 class="h-sec">Expanding Our<br>Digital Footprint</h2>
+        <div class="short-rule"></div>
+        <p class="lede" style="font-size:11pt">Paragraph on the month’s social presence: posts published, reach, which themes resonated (from x.json).</p>
+        <div class="callout icon" style="margin:5mm 0 3mm"><span class="badge dark"><i class="ico" data-i="trend"></i></span>
+          <p>Hindu Fund’s {{MONTH}} objective was to … (one sentence).</p></div>
+        <p class="txt">Closing line on engagement trend.</p>
+      </div>
+    </div>
+    <div class="half cream">
+      <div class="body-pad" style="padding-top:7mm;display:flex;flex-direction:column;gap:3mm">
+        <h2 class="h-sec" style="font-size:16pt">Highlights This Month</h2>
+        <div class="pillars">
+          <div><span class="badge ring"><i class="ico" data-i="chart"></i></span><b>00 posts</b><span>published on X this month</span></div>
+          <div><span class="badge ring"><i class="ico" data-i="users"></i></span><b>00 views</b><span>across all posts</span></div>
+          <div><span class="badge ring"><i class="ico" data-i="megaphone"></i></span><b>Top theme</b><span>what resonated most</span></div>
+        </div>
+        <p class="h-sub" style="font-size:11pt">A Glimpse of the Engagement on Social Media</p>
+        <div class="tweets" style="grid-template-columns:repeat(3,1fr)">
+          <div class="tweet"><div class="who"><b>Hindu Network Foundation</b><span>@{{HANDLE}} · 00 {{MONTH}}</span></div>
+            <div class="t">Top post text, verbatim (trim at a sentence end).</div>
+            <figure class="slot" data-slot="p04-t1" data-ratio="16/10" data-hint="Image attached to top post (X media)"><div class="frame"><img src="images/p04-t1.jpg" alt=""></div></figure>
+            <div class="m"><span><b>0</b>views</span><span><b>0</b>likes</span><span><b>0</b>reposts</span></div></div>
+          <div class="tweet"><div class="who"><b>Hindu Network Foundation</b><span>@{{HANDLE}} · 00 {{MONTH}}</span></div>
+            <div class="t">Second post, verbatim.</div>
+            <figure class="slot" data-slot="p04-t2" data-ratio="16/10" data-hint="Image attached to post 2"><div class="frame"><img src="images/p04-t2.jpg" alt=""></div></figure>
+            <div class="m"><span><b>0</b>views</span><span><b>0</b>likes</span></div></div>
+          <div class="tweet"><div class="who"><b>Hindu Network Foundation</b><span>@{{HANDLE}} · 00 {{MONTH}}</span></div>
+            <div class="t">Third post, verbatim.</div>
+            <div class="m"><span><b>0</b>views</span><span><b>0</b>likes</span></div></div>
+        </div>
+        <div class="followers" style="margin-top:auto">
+          <div><i class="ico" data-i="x"></i><span class="p">X (Twitter)</span><span class="n">0</span><span class="k">Followers</span></div>
+          <div><i class="ico" data-i="youtube" data-brand></i><span class="p">YouTube</span><span class="n">0</span><span class="k">Subscribers</span></div>
+          <div><i class="ico" data-i="instagram" data-brand></i><span class="p">Instagram</span><span class="n">0</span><span class="k">Followers</span></div>
+          <div><i class="ico" data-i="facebook" data-brand></i><span class="p">Facebook</span><span class="n">0</span><span class="k">Followers</span></div>
+          <div><i class="ico" data-i="linkedin" data-brand></i><span class="p">LinkedIn</span><span class="n">0</span><span class="k">Followers</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ======================= 05 · WEBINAR ======================= -->
+<!-- DATA: website `events` (webinar page) + webinar poster from Drive/website -->
+<section class="page" data-type="webinar">
+  <div class="split">
+    <div class="half paper">
+      <div class="hdr" style="height:auto;padding-top:5mm;padding-bottom:4mm;flex-direction:column;align-items:flex-start;gap:3mm;background:linear-gradient(180deg,#2B1A14,#3B2516)">
+        <div style="display:flex;align-items:center;gap:5mm"><h1 style="font-weight:400;font-size:32pt">Webinar</h1><span class="cap" style="color:var(--gold-lt);border-left:.6pt solid #fff6;padding-left:5mm;font-size:10pt">{{MONTH}}</span></div>
+        <div style="display:flex;align-items:center;gap:7mm">
+          <div class="datebox"><span>{{MONTH}}</span><b>00</b></div>
+          <div><p style="font:400 20pt/1.2 var(--display)">Speaker Name</p><p style="font:400 13pt/1.3 var(--display);color:var(--gold-lt)">(Organisation)</p></div>
+        </div>
+      </div>
+      <div class="body-pad" style="display:flex;justify-content:center">
+        <figure class="slot frame-shadow" data-slot="p05-poster" data-ratio="4/5" style="height:100%;aspect-ratio:4/5"
+                data-hint="Webinar poster (website/Drive)"><div class="frame" style="height:100%"><img src="images/p05-poster.jpg" alt="" style="object-fit:contain;background:#2B1A14"></div></figure>
+      </div>
+    </div>
+    <div class="half cream">
+      <div class="hdr gold"><h2 style="font-weight:700;letter-spacing:.04em">About the Webinar</h2></div>
+      <div class="body-pad" style="display:flex;align-items:center">
+        <div class="txt" style="font-size:13pt;line-height:1.5"><p>What the webinar covered, who spoke, who it is for — 120 to 160 words from the event page.</p></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ======================= 06 · DONOR CONTRIBUTIONS ======================= -->
+<!-- DATA: Drive "MIS Sheet" / "Data for Annual Report" — donor counts + amounts by type for the month -->
+<section class="page cream" data-type="donors">
+  <div class="full">
+    <div class="split" style="height:auto">
+      <div class="hdr"><h1>Major Donor Contributions</h1></div>
+      <div class="paper" style="display:flex;align-items:center;gap:5mm;padding:0 7mm;height:var(--hdr-h)">
+        <i class="ico" data-i="hands" style="font-size:15mm;color:var(--brown)"></i>
+        <div><p class="h-sub">Our Gratitude</p><p class="txt" style="font-size:9.5pt;line-height:1.35">We deeply appreciate our major donors for their trust and continued support in strengthening Dharmic institutions and creating a lasting impact across Bharat.</p></div>
+      </div>
+    </div>
+    <div class="band" style="background:transparent"><div class="tab">{{MONTH}}: A Snapshot of our Donor Contributions</div></div>
+    <div style="flex:1;display:grid;grid-template-columns:1.2fr 1fr;align-items:center;padding:0 14mm;gap:10mm">
+      <div>
+        <p style="font:700 22pt/1 var(--display);color:#1E2A4A;text-align:center">Donor Distribution</p>
+        <p class="small" style="text-align:center;margin:1.5mm 0 3mm">Based on number of donors</p>
+        <div class="chart" data-chart="pie" data-unit="count" data-legend="none" data-size="74mm"
+             data-colors='["#2E5E86","#D9822B","#3F8A4F"]'
+             data-values='[["Major Donors",4],["Retail Donors",100],["Project Specific Donors",4]]'></div>
+      </div>
+      <div class="details">
+        <h4>Details</h4>
+        <div><i style="background:#2E5E86"></i><p><b>Major Donors</b><span>0 donors — INR 0</span></p></div>
+        <div><i style="background:#D9822B"></i><p><b>Retail Donors</b><span>0 donors — INR 0</span></p></div>
+        <div><i style="background:#3F8A4F"></i><p><b>Project Specific Donors</b><span>0 donors</span></p></div>
+      </div>
+    </div>
+    <p style="font:700 11pt/1.35 var(--display);padding:0 var(--pad) 7mm">By partnering with committed Dharmic philanthropists, we are catalyzing meaningful change across our primary focus areas.</p>
+  </div>
+</section>
+
+<!-- ======================= 07 · GRANTS DISBURSED ======================= -->
+<!-- DATA: Drive "MIS Sheet" / "Hindu Fund | Lifetime Grants" — month's grants by area of work; website `grant` items -->
+<section class="page" data-type="grants">
+  <div class="split">
+    <div class="half paper">
+      <div class="hdr"><h1>Grants Disbursed</h1></div>
+      <div class="body-pad" style="padding-top:3mm">
+        <div class="stat-row"><span class="badge"><i class="ico" data-i="users"></i></span><div><div class="v">0</div><div class="l">Organisations supported</div></div></div>
+        <div class="orn" style="margin:0"><i></i></div>
+        <div class="stat-row"><span class="badge"><i class="ico" data-i="rupee"></i></span><div><div class="v">₹0</div><div class="l">Total grants disbursed</div></div></div>
+        <div class="orn" style="margin:0"><i></i></div>
+        <div class="stat-row"><span class="badge"><i class="ico" data-i="heart"></i></span><div><div class="v">₹0</div><div class="l">Individual support</div></div></div>
+        <div class="orn" style="margin:0"><i></i></div>
+        <div class="stat-row"><span class="badge"><i class="ico" data-i="file"></i></span><div class="stat-inline"><span class="v">0</span><span class="l">grants across<br>0 focus areas</span></div></div>
+      </div>
+      <div style="position:absolute;left:0;right:8mm;bottom:0;background:var(--ink);color:#fff;padding:5mm 9mm 6mm;clip-path:polygon(4% 0,100% 0,100% 100%,0 100%);border-top:2mm solid var(--gold)">
+        <p class="txt" style="font-size:10pt">A vibrant network of changemakers across India, committed to preserving, revitalizing, and reinforcing Sanatana values in all aspects of life.</p>
+      </div>
+    </div>
+    <div class="half cream">
+      <div class="band" style="background:transparent;margin-top:3mm"><div class="tab sm" style="min-width:90%">{{MONTH}}: Monthly Snapshot of our grants</div></div>
+      <div class="body-pad" style="padding-top:5mm">
+        <p class="h-sub" style="text-align:center;font-size:14pt">Distribution of Funds by Area of Work</p>
+        <div class="orn"><i></i></div>
+        <div class="chart" data-chart="donut" data-unit="inr" data-size="74mm"
+             data-values='[["Area one",500000],["Area two",300000],["Area three",200000]]'></div>
+        <div class="orn"><i></i></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ======================= 08 · MAJOR EVENTS ======================= -->
+<!-- DATA: website events/projects published this month + X posts + Drive event photos -->
+<section class="page paper" data-type="events">
+  <div class="full">
+    <div class="hdr"><h1>Major Events of {{MONTH}}</h1></div>
+    <div class="band"><div class="tab" style="min-width:40%">{{MONTH}} in a nutshell</div></div>
+    <div class="body-pad" style="padding-top:4mm;display:flex;flex-direction:column">
+      <p style="font:700 10.5pt/1.4 var(--serif);letter-spacing:.02em;margin-bottom:5mm">This month marked … (one sentence summarising the month’s milestones).</p>
+      <div class="events">
+        <div class="event"><figure class="slot" data-slot="p08-e1" data-ratio="4/3" data-hint="Event 1 photo"><div class="frame"><img src="images/p08-e1.jpg" alt=""></div></figure>
+          <div><span class="when">00 {{MONTH}}</span><h3>Event one</h3><p>Two to three sentences: what, where, who, why it matters.</p></div></div>
+        <div class="event"><figure class="slot" data-slot="p08-e2" data-ratio="4/3" data-hint="Event 2 photo"><div class="frame"><img src="images/p08-e2.jpg" alt=""></div></figure>
+          <div><span class="when">00 {{MONTH}}</span><h3>Event two</h3><p>Two to three sentences.</p></div></div>
+        <div class="event"><figure class="slot" data-slot="p08-e3" data-ratio="4/3" data-hint="Event 3 photo or post image"><div class="frame"><img src="images/p08-e3.jpg" alt=""></div></figure>
+          <div><span class="when">00 {{MONTH}}</span><h3>Event three</h3><p>Two to three sentences.</p></div></div>
+        <div class="event"><figure class="slot" data-slot="p08-e4" data-ratio="4/3" data-hint="Event 4 photo"><div class="frame"><img src="images/p08-e4.jpg" alt=""></div></figure>
+          <div><span class="when">00 {{MONTH}}</span><h3>Event four</h3><p>Two to three sentences.</p></div></div>
+      </div>
+    </div>
+    <div class="foot-band"></div>
+  </div>
+</section>
+
+<!-- ======================= 09 · MAJOR INITIATIVE ======================= -->
+<!-- DATA: Drive "Monthly Update Reports" → Legal_Activity_Report_<MONTH>_<YEAR>.pdf (or the month's flagship initiative) -->
+<section class="page" data-type="initiative">
+  <div class="full">
+    <div class="hdr"><h1>Major Initiative: Hindu Legal Fund</h1></div>
+    <div class="band"><div class="tab sm" style="min-width:45%">Building a sustained legal response for Dharmic and civilizational concerns</div></div>
+    <div style="flex:1;display:grid;grid-template-columns:62fr 38fr;min-height:0">
+      <div class="paper body-pad spaced">
+        <p>Intro: what the initiative is and its consolidated record this month (counts from the report).</p>
+        <p style="margin-top:3mm"><b>KEY MATTERS</b></p>
+        <p style="margin-top:2mm"><b>Matter category</b><br>One or two lines.</p>
+        <p style="margin-top:2mm"><b>Matter category</b><br>One or two lines.</p>
+        <p style="margin-top:2mm"><b>Matter category</b><br>One or two lines.</p>
+        <p style="margin-top:3mm"><b>0 RTIs | 0 Complaints &amp; Representations | 0 Matters in Pipeline</b></p>
+      </div>
+      <figure class="slot bare paper" data-slot="p09-initiative" data-ratio="free" style="height:100%"
+              data-hint="Initiative key visual (scales of justice / courts / temple). Static brand image is fine.">
+        <div class="frame" style="height:100%"><img src="images/p09-initiative.jpg" alt=""></div>
+      </figure>
+    </div>
+  </div>
+</section>
+
+<!-- ======================= 10 · IMPACT STORY ======================= -->
+<!-- DATA: one grantee/project from the website (grantees/project) or the webinar speaker; photos from website/Drive -->
+<section class="page" data-type="impact">
+  <div class="split">
+    <div class="half paper">
+      <div class="hdr"><h1>Impact Story</h1></div>
+      <div class="band"><div class="tab" style="justify-content:center;min-width:75%">Grantee Name</div></div>
+      <div style="padding:4mm 12mm 0">
+        <figure class="slot" data-slot="p10-media" data-ratio="16/9" data-hint="Grantee programme still / video thumbnail"><div class="frame"><img src="images/p10-media.jpg" alt=""></div></figure>
+      </div>
+      <div class="mauvebg spaced" style="margin-top:3mm;padding:4mm var(--pad);border-top:.8pt solid var(--ink);border-bottom:.8pt solid var(--ink);flex:1">
+        <p>120–150 words: who the grantee is, what they do, how Hindu Fund’s support helps, who benefits.</p>
+      </div>
+    </div>
+    <figure class="slot" data-slot="p10-hero" data-ratio="free" style="height:100%"
+            data-hint="Full-height portrait of the grantee in action.">
+      <div class="frame" style="height:100%"><img src="images/p10-hero.jpg" alt=""></div>
+    </figure>
+  </div>
+</section>
+
+<!-- ======================= 11 · LIFETIME IMPACT ======================= -->
+<!-- DATA: Drive "Hindu Fund | Lifetime Grants" + website counts (grantees REST total) -->
+<section class="page paper" data-type="lifetime">
+  <div class="full">
+    <div class="hdr"><h1>Lifetime Impact at a Glance</h1></div>
+    <div class="band"></div>
+    <div style="flex:1;display:flex;align-items:center;justify-content:center">
+      <div class="discs">
+        <div class="disc c1"><b>000+</b><span>TOTAL NUMBER<br>OF GRANTS</span></div>
+        <div class="disc c2 big"><b>00.0Cr</b><span>TOTAL GRANTS</span></div>
+        <div class="disc c3"><b>00+</b><span>TOTAL<br>GRANTEES</span></div>
+      </div>
+    </div>
+    <div class="band" style="height:12mm"></div>
+  </div>
+</section>
+
+<!-- ======================= 12 · DONOR PROCESS (static) ======================= -->
+<section class="page" data-type="process">
+  <div class="split">
+    <div class="half mauvebg">
+      <div class="hdr" style="height:56mm"><h1 class="light" style="font-size:25pt">System &amp; Process for Donor Management &amp; Communication</h1></div>
+      <div class="body-pad spaced" style="display:flex;flex-direction:column;justify-content:center;font-size:10.5pt;border-top:.8pt solid var(--ink)">
+        <p>Hindu Fund’s donor engagement systems are designed to prioritise transparency, clear communication, and sustained connection. All interested supporters are onboarded through Zoho CRM and integrated into the Shubhchintak community, where they receive consistent updates on initiatives and outcomes.</p>
+        <p style="margin-top:4mm">Digital contributions are automatically acknowledged with receipts and personalised messages, and grant allocations are displayed on the website for real-time visibility—enabling donors to independently track fund utilisation with grantees and reinforcing trust across the ecosystem.</p>
+      </div>
+    </div>
+    <div class="half cream">
+      <div class="hdr gold" style="height:30mm"><h2 class="label" style="font-size:14pt">Process Flow - Donor Management</h2></div>
+      <div class="body-pad" style="padding:7mm 12mm">
+        <div class="flow">
+          <div>Lead Captured (Website / Event / Contact)</div>
+          <div>Added to Zoho CRM (Profile + Basic Information Stored)</div>
+          <div>Shubhchintak Community Inclusion (Regular Updates, Campaigns, Messages)</div>
+          <div>Donation Made via Website / Link</div>
+          <div>Auto-Receipt Generated · Personalized Thank You Email</div>
+          <div>Tracking of Donation Allocation (Visible on Website + Verification with Grantee)</div>
+          <div>Ongoing Relationship &amp; Engagement (Impact Reports, Invites, Festive Greetings)</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ======================= 13 · PRIORITY PROJECTS + APPEAL (mostly static) ======================= -->
+<section class="page" data-type="appeal">
+  <div class="split">
+    <div class="half paper">
+      <div class="hdr"><h1>Our Priority Projects</h1></div>
+      <div class="body-pad txt" style="font-size:9.8pt;line-height:1.42">
+        <p>Hindu Fund’s strategic focus remains on Manuscript Digitisation and Legal Advocacy, two key pillars supporting the long-term revival of Hindu civilisation. Additionally, we are also supporting Sanatan Gharvapsi Foundation.</p>
+        <p><b style="color:var(--ink)">1. MIDF — Manuscript &amp; Inscription Digitisation Foundation</b><br>MIDF works to preserve, digitise, and make accessible India’s manuscripts, inscriptions, and oral knowledge archives, in collaboration with initiatives such as eGangotri and eSahitya Documentation Forum, ensuring civilisational memory endures for future generations.</p>
+        <p><b style="color:var(--ink)">2. Legal Advocacy</b><br>Hindu Fund backs critical Hindu legal battles to safeguard temples and sacred spaces, challenge discriminatory policies, and uphold fair governance.</p>
+        <p><b style="color:var(--ink)">3. Sanatan Gharwapsi Foundation</b><br>The Sanatan Gharwapsi Foundation (SGF) works to enable lawful and dignified return to Sanatan Dharma by providing structured legal, cultural, and community support across India.</p>
+      </div>
+      <div class="foot-band"></div>
+    </div>
+    <div class="half cream">
+      <div class="hdr gold"><h2 class="label" style="font-weight:400;font-size:22pt">Appeal</h2></div>
+      <div class="body-pad txt" style="font-size:11.5pt;display:flex;flex-direction:column">
+        <p>Hindu Fund is strengthening the financial foundation of Bharat’s civilizational resurgence by supporting institutions, scholars, and grassroots initiatives committed to upholding Dharma nationwide.</p>
+        <p>Through focused support across education, media, legal advocacy, and heritage preservation, each grant advances the Hindu narrative and enables changemakers to protect civilizational assets and drive spiritual and cultural renewal.</p>
+        <svg class="flourish" viewBox="0 0 300 20" preserveAspectRatio="none"><path d="M5 10h120c10 0 15-8 25-8s15 8 25 8h120" fill="none" stroke="currentColor" stroke-width="1.6"/><circle cx="12" cy="10" r="3" fill="none" stroke="currentColor"/><circle cx="288" cy="10" r="3" fill="none" stroke="currentColor"/></svg>
+        <div class="ribbon">Your contribution fuels this movement.<br>Join us in shaping a self-reliant, Dharmic future.</div>
+        <figure class="slot qr" data-slot="qr-contribute" data-ratio="1/1" style="width:34mm;margin:6mm auto 0"
+                data-hint="Contribute QR (static) → hindu.fund/contribute"><div class="frame"><img src="images/qr-contribute.png" alt=""></div></figure>
+      </div>
+    </div>
+  </div>
+</section>
+
+<script src="theme.js"></script>
+<script src="magazine.js"></script>
+</body>
+</html>

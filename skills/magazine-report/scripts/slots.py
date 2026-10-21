@@ -9,6 +9,7 @@ A slot is <figure class="slot" data-slot="ID" data-ratio=".." data-hint="..">.
 It is filled by images/<ID>.<jpg|jpeg|png|webp|avif>.
 """
 import argparse
+import html
 import html.parser
 import json
 import pathlib
@@ -75,18 +76,43 @@ def cmd_list(issue, as_json):
         print("Images not matching any slot (rename or --assign):", ", ".join(stray))
 
 
+def set_credit(text, slot, line):
+    """Put the credit line into the slot's caption (stock / X / website photos must be credited)."""
+    m = re.search(r'<figure[^>]*data-slot="' + re.escape(slot) + r'"[^>]*>.*?</figure>', text, re.S)
+    if not m:
+        return text
+    fig, cred = m.group(0), f'<span class="credit">{html.escape(line)}</span>'
+    if 'class="credit"' in fig:
+        new = re.sub(r'<span class="credit">.*?</span>', cred, fig, count=1, flags=re.S)
+    elif "</figcaption>" in fig:
+        new = fig.replace("</figcaption>", f" {cred}</figcaption>", 1)
+    else:
+        new = fig.replace("</figure>", f'<figcaption class="caption">{cred}</figcaption></figure>', 1)
+    return text[:m.start()] + new + text[m.end():]
+
+
 def cmd_fill(issue, assigns):
     images = issue / "images"
     images.mkdir(exist_ok=True)
+    credits_file = images / "credits.json"
+    credits = json.loads(credits_file.read_text()) if credits_file.exists() else {}
     for pair in assigns or []:
         slot, _, src = pair.partition("=")
         src_path = pathlib.Path(src).expanduser()
+        if not src_path.is_file() and (issue / src).is_file():  # path relative to the issue
+            src_path = issue / src
         if not slot or not src_path.is_file() or src_path.suffix.lower() not in EXTS:
             sys.exit(f"bad --assign {pair!r} (need SLOT=/path/to/image{{{','.join(EXTS)}}})")
         for ext in EXTS:  # one file per slot
             (images / f"{slot}{ext}").unlink(missing_ok=True)
-        shutil.copy(src_path, images / f"{slot}{src_path.suffix.lower()}")
+            credits.pop(f"{slot}{ext}", None)
+        dest = f"{slot}{src_path.suffix.lower()}"
+        shutil.copy(src_path, images / dest)
+        if src_path.name in credits:  # carry attribution with the file
+            credits[dest] = {**credits[src_path.name], "from_candidate": src_path.name}
         print(f"assigned {src_path.name} -> {slot}")
+    if credits:
+        credits_file.write_text(json.dumps(credits, indent=2, ensure_ascii=False))
 
     html_path, slots = load(issue)
     text = html_path.read_text(encoding="utf-8")
@@ -98,8 +124,11 @@ def cmd_fill(issue, assigns):
         new, n = pattern.subn(r"\g<1>images/" + s["file"] + r"\g<2>", text)
         if n and new != text:
             text, changed = new, changed + 1
+        line = (credits.get(s["file"]) or {}).get("credit_line")
+        if line:
+            text = set_credit(text, s["slot"], line)
     html_path.write_text(text, encoding="utf-8")
-    print(f"updated {changed} image paths")
+    print(f"updated {changed} image paths; credits applied where known")
     cmd_list(issue, False)
 
 

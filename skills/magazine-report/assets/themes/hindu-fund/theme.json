@@ -1,0 +1,16 @@
+{
+  "name": "hindu-fund",
+  "description": "Hindu Fund Monthly Impact Report — landscape, plum/ochre/cream, matches the August 2026 Canva issue",
+  "reference": "design-references/hindu-fund-monthly-august-2026.pdf",
+  "templates": { "monthly": "monthly.html" },
+  "copy": ["theme.css", "theme.js", "logo.png", "static/paper.jpg"],
+  "slot_defaults": {
+    "p01-temple": "static/temple-cut.png",
+    "p02-founder": "static/founder.png",
+    "p03-community": "static/community.jpg",
+    "p09-initiative": "static/legal.png",
+    "qr-whatsapp": "static/qr-whatsapp.png",
+    "qr-contribute": "static/qr-contribute.png"
+  },
+  "page_px": [1081, 786]
+}

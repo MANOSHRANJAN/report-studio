@@ -1,6 +1,6 @@
 ---
 name: magazine-report
-description: Build a magazine-style, print-ready report (HTML + PDF) from real sources — reports and PDFs fetched from websites, files in Google Drive, and Twitter/X posts. Use when the user asks to make, compile, design or update a report, briefing, deep-dive, industry/market report, research digest, newsletter issue, annual/impact report, or "magazine"; when they share report URLs, Drive files/folders, or tweets to turn into a publication; or when they ask what is in their Drive / what a set of reports says. Also use to restyle an existing report into an editorial magazine layout with image slots.
+description: Build a magazine-style, print-ready report (HTML + PDF) from real sources — reports and PDFs fetched from websites, files in Google Drive, and Twitter/X posts — including the recurring MONTHLY report (that month's X posts + website updates + Drive photos/data, stock photos only to fill gaps). Use when the user asks for a monthly report/impact report/newsletter for a month, or when the user asks to make, compile, design or update a report, briefing, deep-dive, industry/market report, research digest, newsletter issue, annual/impact report, or "magazine"; when they share report URLs, Drive files/folders, or tweets to turn into a publication; or when they ask what is in their Drive / what a set of reports says. Also use to restyle an existing report into an editorial magazine layout with image slots.
 ---
 
 # Magazine Report
@@ -19,10 +19,20 @@ Four phases, always in this order. Do not skip the brief.
 repo, or the plugin's install path). Issues are created in `reports/` under the current
 working directory.
 
+## Monthly issue (the most common job)
+
+"Make the monthly report", "September report", `/monthly-report 2026-09` → follow
+**`references/monthly.md`** end to end. It uses `report.config.json` (org, X handles, website,
+Drive folders/sheets, theme, stock keywords) and the org theme in `assets/themes/<theme>/`
+(Hindu Fund: landscape Canva-style issue matching `design-references/`). Scripts:
+`fetch_web.py`, `fetch_x.py`, `drive_save.py`, `sheet_extract.py`, `digest.py`,
+`candidates.py`, `stock.py`, then `slots.py` + `render.py` as below.
+
 ## 0. Set up the issue folder
 
 ```bash
 python3 SKILL_DIR/scripts/new_issue.py "<Report title>"   # prints reports/<slug>/
+python3 SKILL_DIR/scripts/new_issue.py --monthly --month 2026-09   # monthly issue, themed
 ```
 
 Creates `sources/`, `images/`, `brief.md`, and copies `assets/magazine-template.html` →

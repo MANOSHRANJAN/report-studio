@@ -11,6 +11,25 @@ Output: `report.pdf`, `report.html`, page previews, and a table of image slots.
 
 ![Template preview](docs/template-preview.png)
 
+## Monthly report (Hindu Fund)
+
+`/monthly-report 2026-09` builds the month's **Monthly Impact Report** in the style of the August 2026
+issue (`design-references/`):
+
+1. **Gather**: everything @hindufund_ / @HinduLegalFund posted that month (Agent Reach · twitter-cli),
+   everything hindu.fund published that month (WordPress API: posts, events, projects, grantees,
+   grants, resources), Drive photos of the month, Drive data sheets (exported in full and parsed),
+   and the month's documents (e.g. Legal Fund record).
+2. **Photos**: Drive first, then the org's own X and website images, then stock (Pexels, Unsplash or
+   Openverse) only for atmosphere gaps, with credits added to captions automatically.
+3. **Design**: the `hindu-fund` theme (landscape, plum/ochre/cream, real Canva paper texture, logo,
+   founder cut-out, QR codes), with data-driven donut and pie charts.
+4. **Honesty**: pages without data are hidden and listed as *pending*. Mismatches go into
+   `brief.md → Needs confirmation`. Nothing is invented.
+
+Configure it in `report.config.json`. Optional: `PEXELS_API_KEY` / `UNSPLASH_ACCESS_KEY` for
+better stock photos (Openverse works without a key).
+
 ## What's inside
 
 | Skill | Source | Role |
@@ -31,6 +50,7 @@ Output: `report.pdf`, `report.html`, page previews, and a table of image slots.
 | `/tweets <query \| @handle \| urls>` | Pull Twitter/X posts |
 | `/report-render [reports/<slug>]` | Fill image slots, re-render, self-check |
 | `/report-setup` | Install/check Agent Reach, twitter-cli, Chrome |
+| `/monthly-report [YYYY-MM]` | The month's impact report: X + website + Drive → themed PDF |
 
 When installed as a plugin they are namespaced: `/report-studio:report`, etc.
 
@@ -92,6 +112,9 @@ Google Drive). It is then available in claude.ai chats, the desktop app and, if 
 the environment, Claude Code sessions. The skill only reads; it never moves, shares or deletes files.
 
 ## Your design references
+
+`design-references/*.pdf` is git-ignored (past issues contain internal figures). The Hindu Fund
+theme already encodes the August design. Keep the PDF locally if you want to restyle.
 
 Drop reference images or PDFs (magazine spreads, reports you like, annotated sketches showing
 where images go) into **`design-references/`**. The skill reads every file there before
