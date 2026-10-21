@@ -10,7 +10,8 @@
     ],
     "include_replies": false,
     "include_retweets": false,
-    "max_posts": 300
+    "max_posts": 300,
+    "chrome_profile": "Sarayu Trust"
   },
   "website": {
     "url": "https://hindu.fund",
