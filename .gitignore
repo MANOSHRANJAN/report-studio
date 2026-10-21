@@ -1,0 +1,12 @@
+# generated issues stay local unless you choose to commit one
+reports/*
+!reports/.gitkeep
+dist/
+.taste-skill/
+__pycache__/
+*.pyc
+.DS_Store
+# never commit credentials
+.env
+.env.*
+*cookies*

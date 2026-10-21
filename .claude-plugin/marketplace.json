@@ -1,0 +1,16 @@
+{
+  "name": "report-studio",
+  "owner": {
+    "name": "MANOSHRANJAN"
+  },
+  "metadata": {
+    "description": "Report Studio: magazine-style report making for Claude Code \u2014 sourcing from web, Drive and Twitter/X plus bundled design skills."
+  },
+  "plugins": [
+    {
+      "name": "report-studio",
+      "source": "./",
+      "description": "Magazine-style reports from websites, Google Drive and Twitter/X, with design skills bundled."
+    }
+  ]
+}

@@ -1,0 +1,10 @@
+{
+  "name": "report-studio",
+  "version": "1.0.0",
+  "description": "Magazine-style reports from websites, Google Drive and Twitter/X — with Agent Reach, Impeccable, Taste and Anthropic frontend-design skills bundled.",
+  "author": { "name": "MANOSHRANJAN" },
+  "homepage": "https://github.com/MANOSHRANJAN/report-studio",
+  "repository": "https://github.com/MANOSHRANJAN/report-studio",
+  "license": "MIT",
+  "keywords": ["report", "magazine", "pdf", "design", "twitter", "google-drive", "agent-reach"]
+}
