@@ -39,6 +39,24 @@ def run_twitter(args):
     return (data if isinstance(data, list) else []), None
 
 
+def from_opencli(row):
+    """Normalise an `opencli twitter search/tweets -f json` row (Agent Reach's browser-session
+    backend) to twitter-cli's schema."""
+    media = []
+    for u in row.get("media_urls") or []:
+        if "pbs.twimg.com/media" in u:
+            media.append({"type": "photo", "url": u.split("?")[0]})
+    for u in row.get("media_posters") or []:  # video poster frames work as photos
+        if u:
+            media.append({"type": "photo", "url": u.split("?")[0], "poster": True})
+    handle = row.get("author") or ""
+    return {"id": str(row.get("id")), "text": row.get("text", ""),
+            "author": {"screenName": handle, "name": handle},
+            "metrics": {"likes": int(row.get("likes") or 0), "views": int(row.get("views") or 0)},
+            "createdAt": row.get("created_at", ""), "media": media, "urls": [],
+            "isRetweet": (row.get("text") or "").startswith("RT @")}
+
+
 def created_iso(t):
     iso = t.get("createdAtISO") or ""
     if iso[:4].isdigit():
@@ -57,7 +75,9 @@ def main():
     ap.add_argument("--max", type=int)
     ap.add_argument("--include-replies", action="store_true")
     ap.add_argument("--include-retweets", action="store_true")
-    ap.add_argument("--from-json", help="parse saved twitter-cli JSON instead of fetching")
+    ap.add_argument("--from-json", action="append",
+                    help="parse saved JSON instead of fetching: twitter-cli output, x_from_browser.mjs "
+                         "output, or `opencli twitter search ... -f json` (repeatable)")
     ap.add_argument("--config")
     a = ap.parse_args()
 
@@ -74,9 +94,16 @@ def main():
 
     raw, methods, errors = [], [], []
     if a.from_json:
-        payload = json.loads(pathlib.Path(a.from_json).read_text())
-        raw = payload.get("data", payload) if isinstance(payload, dict) else payload
-        methods.append("file")
+        for f in a.from_json:
+            payload = json.loads(pathlib.Path(f).read_text())
+            rows = payload.get("data", payload) if isinstance(payload, dict) else payload
+            if rows and isinstance(rows[0].get("author"), str):  # opencli rows
+                rows = [from_opencli(r) for r in rows]
+                methods.append(f"opencli:{pathlib.Path(f).name}")
+            else:
+                methods.append(f"file:{pathlib.Path(f).name}")
+            raw += rows
+        handles = handles or sorted({(r.get("author") or {}).get("screenName", "") for r in raw} - {""})
     else:
         if not (os.environ.get("TWITTER_AUTH_TOKEN") and os.environ.get("TWITTER_CT0")):
             write_json(issue / "sources" / "x.json", {"status": "no-auth", "handles": handles, "month": win["key"]})

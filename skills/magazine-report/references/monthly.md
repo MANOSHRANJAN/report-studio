@@ -19,10 +19,13 @@ stock keywords. Read it first.
 S=SKILL_DIR/scripts
 python3 $S/new_issue.py --monthly --month YYYY-MM        # → reports/.work/<slug>/ (theme from config)
 python3 $S/fetch_web.py reports/.work/<slug> --month YYYY-MM
-python3 $S/fetch_x.py   reports/.work/<slug> --month YYYY-MM  # exit 2 = no cookies → try the browser route:
-#   (user, once, in Terminal.app) bash scripts/chrome-debug-profile.sh "<twitter.chrome_profile>"
-#   node $S/x_from_browser.mjs --handle <h> --month YYYY-MM --out reports/.work/<slug>/sources/raw/x-<h>.json
-#   python3 $S/fetch_x.py reports/.work/<slug> --month YYYY-MM --from-json reports/.work/<slug>/sources/raw/x-<h>.json
+# X — preferred on a desktop: Agent Reach's OpenCLI route (user's logged-in Chrome + OpenCLI extension)
+opencli doctor                                            # extensionConnected must be true
+opencli twitter search "since:<start> until:<end>" --from <handle> --product live --exclude replies \
+        --limit 200 --window background -f json > reports/.work/<slug>/sources/raw/opencli-<handle>.json
+opencli twitter profile <handle> -f json                  # follower count
+python3 $S/fetch_x.py reports/.work/<slug> --month YYYY-MM --from-json <each opencli-*.json>
+# no Chrome (cloud): python3 $S/fetch_x.py reports/.work/<slug> --month YYYY-MM   (needs TWITTER_AUTH_TOKEN/CT0)
 # Drive (connector tools, see below) → drive_save.py / sheet_extract.py
 python3 $S/digest.py     reports/.work/<slug>
 python3 $S/candidates.py reports/.work/<slug>                 # Read previews/candidates-*.png

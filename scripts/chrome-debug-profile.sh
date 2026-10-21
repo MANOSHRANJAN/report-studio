@@ -15,26 +15,35 @@ PORT="${PORT:-9222}"
 SRC="$HOME/Library/Application Support/Google/Chrome"
 CHROME="/Applications/Google Chrome.app/Contents/MacOS/Google Chrome"
 
-DIR=$(python3 - "$SRC/Local State" "$NAME" <<'EOF'
+DEST="$HOME/.chrome-debug-profiles/$(echo "$NAME" | tr ' /' '__')"
+mkdir -p "$DEST/Default"
+START_URL="https://x.com/home"
+
+if [[ -r "$SRC/Local State" ]] && DIR=$(python3 - "$SRC/Local State" "$NAME" <<'EOF'
 import json, sys
 cache = json.load(open(sys.argv[1]))["profile"]["info_cache"]
-hits = [k for k, v in cache.items() if v.get("name", "").strip().lower() == sys.argv[2].strip().lower()]
+want = sys.argv[2].strip().lower().replace(" ", "")
+names = {k: v.get("name", "").strip().lower().replace(" ", "") for k, v in cache.items()}
+hits = [k for k, n in names.items() if n == want] or [k for k, n in names.items() if want in n or n in want]
 print(hits[0] if hits else "")
 if not hits:
     print("profiles: " + ", ".join(v.get("name", "") for v in cache.values()), file=sys.stderr)
 EOF
-)
-[[ -n "$DIR" ]] || { echo "No Chrome profile named \"$NAME\"."; exit 1; }
-
-DEST="$HOME/.chrome-debug-profiles/$(echo "$NAME" | tr ' /' '__')"
-mkdir -p "$DEST/Default"
-cp "$SRC/Local State" "$DEST/Local State"
-rsync -a --delete \
-  --exclude 'Cache' --exclude 'Code Cache' --exclude 'GPUCache' --exclude 'Service Worker/CacheStorage' \
-  --exclude 'Service Worker/ScriptCache' --exclude 'DawnCache' --exclude 'GrShaderCache' \
-  --exclude 'File System' --exclude 'IndexedDB' --exclude 'blob_storage' --exclude 'Extensions' \
-  "$SRC/$DIR/" "$DEST/Default/"
-echo "Profile \"$NAME\" ($DIR) copied to $DEST"
+) && [[ -n "$DIR" ]]; then
+  cp "$SRC/Local State" "$DEST/Local State"
+  rsync -a --delete \
+    --exclude 'Cache' --exclude 'Code Cache' --exclude 'GPUCache' --exclude 'Service Worker/CacheStorage' \
+    --exclude 'Service Worker/ScriptCache' --exclude 'DawnCache' --exclude 'GrShaderCache' \
+    --exclude 'File System' --exclude 'IndexedDB' --exclude 'blob_storage' --exclude 'Extensions' \
+    "$SRC/$DIR/" "$DEST/Default/"
+  echo "Profile \"$NAME\" ($DIR) copied to $DEST"
+else
+  # Chrome's folder is not readable from here (macOS app-data protection, e.g. inside the
+  # Claude app). Use the dedicated profile in $DEST instead: log in to X there once — it stays
+  # logged in for future runs.
+  echo "Can't read Chrome's profile folder from this app — using the dedicated profile $DEST."
+  echo "If X asks you to log in, do it once in the window that opens (it is remembered)."
+fi
 
 if curl -s -m 2 "http://127.0.0.1:$PORT/json/version" >/dev/null; then
   echo "Something is already listening on port $PORT — close that Chrome window first."; exit 1

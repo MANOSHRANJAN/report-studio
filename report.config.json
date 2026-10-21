@@ -11,7 +11,8 @@
     "include_replies": false,
     "include_retweets": false,
     "max_posts": 300,
-    "chrome_profile": "Sarayu Trust"
+    "chrome_profile": "manoshranjan99@gmail.com",
+    "backend": "opencli"
   },
   "website": {
     "url": "https://hindu.fund",
