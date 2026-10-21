@@ -17,6 +17,7 @@ import pathlib
 import shutil
 import subprocess
 import sys
+from zoneinfo import ZoneInfo
 
 from _common import add_credit, in_window, load_config, month_window, save_image, write_json
 
@@ -57,14 +58,19 @@ def from_opencli(row):
             "isRetweet": (row.get("text") or "").startswith("RT @")}
 
 
+TZ = ZoneInfo("UTC")  # replaced in main() by report.config.json "timezone" (e.g. Asia/Kolkata)
+
+
 def created_iso(t):
-    iso = t.get("createdAtISO") or ""
-    if iso[:4].isdigit():
-        return iso
+    """Post time in the organisation's own timezone, so 'September' means September where it posts."""
     try:  # raw Twitter format: "Wed Oct 10 20:19:24 +0000 2018"
-        return dt.datetime.strptime(t.get("createdAt", ""), "%a %b %d %H:%M:%S %z %Y").isoformat()
+        when = dt.datetime.strptime(t.get("createdAt", ""), "%a %b %d %H:%M:%S %z %Y")
     except ValueError:
-        return ""
+        iso = t.get("createdAtISO") or ""
+        if not iso[:4].isdigit():
+            return ""
+        when = dt.datetime.fromisoformat(iso)
+    return when.astimezone(TZ).isoformat()
 
 
 def main():
@@ -81,7 +87,10 @@ def main():
     ap.add_argument("--config")
     a = ap.parse_args()
 
-    cfg = load_config(a.config).get("twitter", {})
+    full_cfg = load_config(a.config)
+    cfg = full_cfg.get("twitter", {})
+    global TZ
+    TZ = ZoneInfo(full_cfg.get("timezone", "UTC"))
     handles = [h.lstrip("@") for h in (a.handle or cfg.get("handles") or [])]
     if not handles and not a.from_json:
         sys.exit("no handle: pass --handle or set twitter.handles in report.config.json")
@@ -90,7 +99,9 @@ def main():
     retweets = a.include_retweets or cfg.get("include_retweets", False)
     win = month_window(a.month)
     issue = pathlib.Path(a.issue).resolve()
-    since, until = win["start"].isoformat(), win["end"].isoformat()
+    # search one day wider on each side, then keep only the month in the organisation's timezone
+    since = (win["start"] - dt.timedelta(days=1)).isoformat()
+    until = (win["end"] + dt.timedelta(days=1)).isoformat()
 
     raw, methods, errors = [], [], []
     if a.from_json:

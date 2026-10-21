@@ -21,7 +21,7 @@ python3 $S/new_issue.py --monthly --month YYYY-MM        # → reports/.work/<sl
 python3 $S/fetch_web.py reports/.work/<slug> --month YYYY-MM
 # X — preferred on a desktop: Agent Reach's OpenCLI route (user's logged-in Chrome + OpenCLI extension)
 opencli doctor                                            # extensionConnected must be true
-opencli twitter search "since:<start> until:<end>" --from <handle> --product live --exclude replies \
+opencli twitter search "since:<start − 1 day> until:<end + 1 day>" --from <handle> --product live --exclude replies \
         --limit 200 --window background -f json > reports/.work/<slug>/sources/raw/opencli-<handle>.json
 opencli twitter profile <handle> -f json                  # follower count
 python3 $S/fetch_x.py reports/.work/<slug> --month YYYY-MM --from-json <each opencli-*.json>
@@ -72,6 +72,8 @@ python3 $S/render.py     reports/.work/<slug>                 # Read previews/co
 | 12–13 | static (process flow, priority projects, appeal) | review once a quarter |
 
 ## Rules
+
+- **Dates are the organisation's own (`timezone` in report.config.json, Asia/Kolkata for Hindu Fund).** Search X one day wider on each side; `fetch_x.py` keeps only posts dated inside the month in that timezone, and every X photo in the issue must come from one of those posts (`images/credits.json` records the post URL).
 
 - **No invented numbers.** If a figure has no source, hide the page with
   `hidden data-pending="<what is missing>"` on its `<section>`; `render.py` lists pending pages.
