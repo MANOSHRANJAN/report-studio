@@ -48,7 +48,7 @@ better stock photos (Openverse works without a key).
 | `/report-brief <topic> …` | Gather sources and brief you on them. No design. |
 | `/drive-scan <topic or folder>` | What's in your Drive on this, as a table |
 | `/tweets <query \| @handle \| urls>` | Pull Twitter/X posts |
-| `/report-render [reports/<slug>]` | Fill image slots, re-render, self-check |
+| `/report-render [reports/.work/<slug>]` | Fill image slots, re-render, self-check |
 | `/report-setup` | Install/check Agent Reach, twitter-cli, Chrome |
 | `/monthly-report [YYYY-MM]` | The month's impact report: X + website + Drive → themed PDF |
 
@@ -124,13 +124,13 @@ to a page type. Areas you mark as "image here" become named slots.
 ## Images
 
 Each picture in a report is a slot like `p03-opener`. Drop `p03-opener.jpg` (or png/webp) into
-`reports/<slug>/images/` and run `/report-render`. Empty slots print as labelled placeholders
+`reports/.work/<slug>/images/` and run `/report-render`. Empty slots print as labelled placeholders
 with the ideal ratio and a description of what belongs there.
 
 ```bash
-python3 skills/magazine-report/scripts/slots.py list reports/<slug>
-python3 skills/magazine-report/scripts/slots.py fill reports/<slug> --assign p01-cover=~/Desktop/hero.jpg
-python3 skills/magazine-report/scripts/render.py reports/<slug>
+python3 skills/magazine-report/scripts/slots.py list reports/.work/<slug>
+python3 skills/magazine-report/scripts/slots.py fill reports/.work/<slug> --assign p01-cover=~/Desktop/hero.jpg
+python3 skills/magazine-report/scripts/render.py reports/.work/<slug>
 ```
 
 ## Layout

@@ -17,16 +17,16 @@ stock keywords. Read it first.
 
 ```bash
 S=SKILL_DIR/scripts
-python3 $S/new_issue.py --monthly --month YYYY-MM        # → reports/<org>-YYYY-MM/ (theme from config)
-python3 $S/fetch_web.py reports/<issue> --month YYYY-MM
-python3 $S/fetch_x.py   reports/<issue> --month YYYY-MM  # exit 2 = no cookies → page pending
+python3 $S/new_issue.py --monthly --month YYYY-MM        # → reports/.work/<slug>/ (theme from config)
+python3 $S/fetch_web.py reports/.work/<slug> --month YYYY-MM
+python3 $S/fetch_x.py   reports/.work/<slug> --month YYYY-MM  # exit 2 = no cookies → page pending
 # Drive (connector tools, see below) → drive_save.py / sheet_extract.py
-python3 $S/digest.py     reports/<issue>
-python3 $S/candidates.py reports/<issue>                 # Read previews/candidates-*.png
-python3 $S/stock.py      reports/<issue> --query "<config keyword>" --n 3   # only if gaps remain
+python3 $S/digest.py     reports/.work/<slug>
+python3 $S/candidates.py reports/.work/<slug>                 # Read previews/candidates-*.png
+python3 $S/stock.py      reports/.work/<slug> --query "<config keyword>" --n 3   # only if gaps remain
 # write content into report.html, then:
-python3 $S/slots.py fill reports/<issue> --assign SLOT=images/candidates/<file> ...
-python3 $S/render.py     reports/<issue>                 # Read previews/contact.png + any bad page
+python3 $S/slots.py fill reports/.work/<slug> --assign SLOT=images/candidates/<file> ...
+python3 $S/render.py     reports/.work/<slug>                 # Read previews/contact.png + any bad page
 ```
 
 ## Google Drive steps (connector tools)
@@ -41,7 +41,7 @@ python3 $S/render.py     reports/<issue>                 # Read previews/contact
 3. **Data sheets** (`drive.data_sheets`): `read_file_content` only shows one sample row per tab.
    For real numbers export the whole workbook: `download_file_content` with
    `exportMimeType = application/vnd.openxmlformats-officedocument.spreadsheetml.sheet`, then
-   `sheet_extract.py <saved.txt> reports/<issue>/sources/raw/<sheet-slug>` → one CSV per tab.
+   `sheet_extract.py <saved.txt> reports/.work/<slug>/sources/raw/<sheet-slug>` → one CSV per tab.
    Compute with Python from the CSVs; watch for **"Grand Total" rows** (exclude before summing,
    use them as a cross-check).
 4. **Monthly documents** in `drive.monthly_reports_folder` (e.g. Legal Activity Reports, consolidated

@@ -4,11 +4,13 @@ overflowing pages and empty image slots.
 
 usage: render.py <issue-dir> [--html report.html] [--no-previews]
 
-Outputs in <issue-dir>: report.pdf, previews/page-NN.png, previews/contact.png
+Deliverable: reports/<PDF name>.pdf (name from issue.json) — the only file meant for the user.
+Working outputs stay in the hidden issue folder: report.pdf, previews/page-NN.png, previews/contact.png
 Chrome is found via $CHROME_PATH, standard install paths, or the Playwright cache.
 """
 import argparse
 import html.parser
+import json
 import pathlib
 import shutil
 import subprocess
@@ -106,8 +108,17 @@ def main():
                    f"--screenshot={prev / 'contact.png'}", sheet.as_uri(), out_file=prev / "contact.png")
             sheet.unlink()
 
-    # 4. report
-    print(f"PDF       {pdf}  ({pdf.stat().st_size // 1024} KB, {len(scan.pages)} pages)")
+    # 4. publish the PDF — the one deliverable — next to the hidden working folder
+    final = pdf
+    meta = issue / "issue.json"
+    if meta.exists():
+        name = json.loads(meta.read_text()).get("pdf_name") or "report.pdf"
+        out_dir = issue.parent.parent if issue.parent.name == ".work" else issue.parent
+        final = out_dir / name
+        shutil.copy(pdf, final)
+
+    # 5. report
+    print(f"PDF       {final}  ({final.stat().st_size // 1024} KB, {len(scan.pages)} pages)")
     if not a.no_previews:
         print(f"Previews  {prev}/page-NN.png  ·  overview: {prev / 'contact.png'}")
     over = [f"p{n} ({t})" for n, t, o in scan.pages if o == "yes"]

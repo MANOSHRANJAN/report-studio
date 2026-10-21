@@ -9,10 +9,10 @@ Turn scattered sources into an editorial publication that looks designed, not ge
 Four phases, always in this order. Do not skip the brief.
 
 ```
-1. GATHER   websites · PDFs · Google Drive · Twitter/X   → reports/<slug>/sources/
-2. BRIEF    tell the user what was found, before designing → reports/<slug>/brief.md
-3. DESIGN   magazine layout with named image slots       → reports/<slug>/report.html
-4. RENDER   PDF + page previews, self-check, report slots → reports/<slug>/report.pdf
+1. GATHER   websites · PDFs · Google Drive · Twitter/X   → reports/.work/<slug>/sources/
+2. BRIEF    tell the user what was found, before designing → reports/.work/<slug>/brief.md
+3. DESIGN   magazine layout with named image slots       → reports/.work/<slug>/report.html
+4. RENDER   PDF + page previews, self-check, report slots → reports/.work/<slug>/report.pdf
 ```
 
 `SKILL_DIR` = the folder this SKILL.md is in (`skills/magazine-report` in the Report Studio
@@ -31,7 +31,7 @@ Drive folders/sheets, theme, stock keywords) and the org theme in `assets/themes
 ## 0. Set up the issue folder
 
 ```bash
-python3 SKILL_DIR/scripts/new_issue.py "<Report title>"   # prints reports/<slug>/
+python3 SKILL_DIR/scripts/new_issue.py "<Report title>"   # prints reports/.work/<slug>/
 python3 SKILL_DIR/scripts/new_issue.py --monthly --month 2026-09   # monthly issue, themed
 ```
 
@@ -108,20 +108,22 @@ proceed and keep the brief in the folder.
 ## 4. RENDER + self-check
 
 ```bash
-python3 SKILL_DIR/scripts/slots.py list reports/<slug>      # which slots are filled/empty
-python3 SKILL_DIR/scripts/slots.py fill reports/<slug>      # match images/* to slots by name
-python3 SKILL_DIR/scripts/render.py reports/<slug>          # → report.pdf + preview.png
+python3 SKILL_DIR/scripts/slots.py list reports/.work/<slug>      # which slots are filled/empty
+python3 SKILL_DIR/scripts/slots.py fill reports/.work/<slug>      # match images/* to slots by name
+python3 SKILL_DIR/scripts/render.py reports/.work/<slug>          # → report.pdf + preview.png
 ```
 
 Then **Read `preview.png`** and check: text overflowing a page, orphaned headings at the
 bottom of a page, empty half-pages, clashing colours, slot placeholders that should have been
 filled. Fix and re-render until clean. Ship nothing you have not looked at.
 
-Final message to the user:
-1. Paths to `report.pdf` and `report.html`.
-2. The slot table from `slots.py list` — "drop a file named `<slot-id>.jpg` into
-   `reports/<slug>/images/` and re-run render" — so they know where each image goes.
-3. Sources that could not be read and why.
+**The deliverable is ONE PDF**: `render.py` publishes it as `reports/<PDF name>.pdf`.
+Everything else (HTML, images, sources, brief, previews) is working material in the hidden
+`reports/.work/<slug>/` folder — never present those files to the user as output.
+
+Final message to the user: the PDF link, then at most a few short lines — what needs
+confirmation and which pages are pending (and the exact input needed). No HTML, no previews,
+no slot tables unless they ask how to change a photo.
 
 ## Running in claude.ai (uploaded skill)
 

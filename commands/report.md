@@ -9,3 +9,7 @@ and tweet link in the arguments as a source to fetch. If the arguments only give
 discover sources yourself (Exa / web search for recent reports, Drive search for internal
 files, Twitter for practitioner voices). Check `design-references/` before designing.
 Finish with the PDF path, the empty-slot table, and any sources that failed.
+
+The deliverable is only the PDF in `reports/` (render.py publishes it). Reply with the PDF link plus
+at most a few short lines on what needs confirmation and which pages are pending. Do not hand over
+HTML, previews, briefs or image folders.

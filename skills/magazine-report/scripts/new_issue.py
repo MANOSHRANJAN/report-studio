@@ -2,8 +2,10 @@
 """Create an issue folder with template, engine files, brand, brief skeleton.
 
 usage:
-  new_issue.py "Report title" [--masthead NAME]                 general report → reports/<slug>/
-  new_issue.py --monthly [--month YYYY-MM]                       monthly issue → reports/<org>-YYYY-MM/
+  new_issue.py "Report title" [--masthead NAME]        general report
+  new_issue.py --monthly [--month YYYY-MM]              monthly issue
+Working files go to reports/.work/<slug>/ (hidden). The only deliverable is the PDF that
+render.py writes to reports/<PDF name>.pdf.
 options: --root DIR (project root, default cwd) · --config report.config.json · --force
 """
 import argparse
@@ -87,7 +89,7 @@ def main() -> int:
         slug, title, template = slugify(a.title, 60), a.title, ASSETS / "magazine-template.html"
         month_name, year = today.strftime("%B"), str(today.year)
 
-    issue = pathlib.Path(a.root).resolve() / "reports" / slug
+    issue = pathlib.Path(a.root).resolve() / "reports" / ".work" / slug
     for sub in ("sources/raw", "images/candidates", "previews"):
         (issue / sub).mkdir(parents=True, exist_ok=True)
     for f in ("magazine.css", "magazine.js"):
@@ -120,9 +122,14 @@ def main() -> int:
         (issue / "report.html").write_text(html, encoding="utf-8")
     if not (issue / "brief.md").exists():
         (issue / "brief.md").write_text(BRIEF.format(title=title, date=today.isoformat()), encoding="utf-8")
+    edition = cfg.get("edition_name") or "Report"
+    pdf_name = (f"{org or masthead} Monthly Impact Report - {month_name} {year}" if a.monthly else title)
+    pdf_name = "".join(c for c in pdf_name if c not in '/\\:*?"<>|').strip() + ".pdf"
+    (issue / "issue.json").write_text(json.dumps({"title": title, "pdf_name": pdf_name}, indent=2, ensure_ascii=False))
     if cfg:
         (issue / "sources" / "config.used.json").write_text(json.dumps(cfg, indent=2, ensure_ascii=False))
     print(issue)
+    print(f"→ final PDF will be reports/{pdf_name}", file=sys.stderr)
     return 0
 
 

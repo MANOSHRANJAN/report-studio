@@ -13,5 +13,8 @@ Use the `magazine-report` skill and follow `references/monthly.md` exactly:
 4. Write every page from the data; hide pages whose data is missing (`hidden data-pending`).
    Treat any numbers I gave in the arguments as manual inputs and cite them as "provided by team".
 5. `slots.py fill`, `render.py`, look at the previews, fix, re-render.
-6. Write `brief.md` and reply with: PDF path, what each page is based on, **Needs confirmation**
-   (mismatches, drafts like the founder's note), **Pending pages** with the exact inputs needed.
+6. Keep notes in the hidden working folder's `brief.md` (for the next run), not in the reply.
+
+The deliverable is only the PDF in `reports/` (render.py publishes it). Reply with the PDF link plus
+at most a few short lines on what needs confirmation and which pages are pending. Do not hand over
+HTML, previews, briefs or image folders.

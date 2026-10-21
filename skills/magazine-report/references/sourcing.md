@@ -1,6 +1,6 @@
 # Sourcing recipes
 
-Save every source to `reports/<slug>/sources/NN-<name>.md` with this header:
+Save every source to `reports/.work/<slug>/sources/NN-<name>.md` with this header:
 
 ```
 source: <URL | drive:<fileId> "<path>" | https://x.com/<user>/status/<id>>
@@ -24,9 +24,9 @@ channel: <webfetch | jina | pdftotext | drive | twitter-cli | syndication>
 ## PDF reports
 
 ```bash
-mkdir -p reports/<slug>/sources/raw
-curl -sL -o reports/<slug>/sources/raw/<name>.pdf "<pdf-url>"
-pdftotext -layout reports/<slug>/sources/raw/<name>.pdf - | head -400   # poppler
+mkdir -p reports/.work/<slug>/sources/raw
+curl -sL -o reports/.work/<slug>/sources/raw/<name>.pdf "<pdf-url>"
+pdftotext -layout reports/.work/<slug>/sources/raw/<name>.pdf - | head -400   # poppler
 ```
 
 - No `pdftotext`? Use the `anthropic-skills:pdf` skill or `python3 -m pip install pypdf`
